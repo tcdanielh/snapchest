@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/1c5eb4c5-753d-4a74-9ba9-a7b9494c0f12>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> df5010f2-59ea-460f-bb50-9031fe73b688
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> df5010f2-59ea-460f-bb50-9031fe73b688
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    AssetLibraryId: 5zK0F9AnRX3Bgj0jc0Onwu
+  AssetDataMap:
+    ObjectPrefab: !<own> fad99e06-a5f4-4d90-9cb9-78c897214ee9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefab/53ce6c10-9ae8-40ef-ac12-64c6bc152364>
+  PackagePath: ""
+  objects:
+    - !<own> f3c8436a-a6db-4cfe-ba98-55bc2622e4d6
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/f3c8436a-a6db-4cfe-ba98-55bc2622e4d6>
+  PrefabRemaps:
+    []
+  Name: VolumetricCloud__PLACE_IN_OBJECTS_PANEL
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 16.738873, z: -108.934425}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 6.978697, y: 6.978697, z: 6.978697}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f68bf2a6-146b-454f-b0d5-53c7736a9d5b
+- !<RenderMeshVisual/f68bf2a6-146b-454f-b0d5-53c7736a9d5b>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 832f6232-38b8-4f7c-8ba1-a0bdfe4caf8b
+  Mesh: !<reference> 47517e02-ad72-49e6-8053-f374c15641bf
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ObjectPrefabAssetData/fad99e06-a5f4-4d90-9cb9-78c897214ee9>
+  SourceRemaps:
+    - 1521ed17-18df-4600-ac8f-a752112f97df: f68bf2a6-146b-454f-b0d5-53c7736a9d5b
+    - 96553b52-7738-4089-96ec-e6de02cce9ae: f3c8436a-a6db-4cfe-ba98-55bc2622e4d6
+    - df5010f2-59ea-460f-bb50-9031fe73b688: 53ce6c10-9ae8-40ef-ac12-64c6bc152364
+  SourceState: !<own> 53ce6c10-9ae8-40ef-ac12-64c6bc152364

@@ -8,6 +8,7 @@ import { UICollisionSolver } from "../../NavigationKitAssets/Scripts/UICollision
 import {UpdateDispatcher} from "SpectaclesInteractionKit.lspkg/Utils/UpdateDispatcher"
 import {UserPosition} from "SpectaclesNavigationKit.lspkg/NavigationDataComponent/UserPosition"
 import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import Event, { callback, PublicApi } from "SpectaclesInteractionKit.lspkg/Utils/Event"
 
 const BOUNDARY_HALF_WIDTH_PROJECTION = 35
 const BOUNDARY_HALF_WIDTH = 26
@@ -36,9 +37,11 @@ interface MarkerPositionIndex {
 @component
 export class QuestMarkerController extends BaseScriptComponent {
   @input
-  private navigationComponent: NavigationDataComponent
+  public navigationComponent: NavigationDataComponent
   @input
   private questMarkerPrefab: ObjectPrefab
+  @input
+  private destinationPrefab: ObjectPrefab
   @input
   private inViewMaterial: Material
   @input
@@ -46,7 +49,7 @@ export class QuestMarkerController extends BaseScriptComponent {
   @input
   private scale: number = 1
   @input
-  private markerImageOffsetInDegree: number = 0
+  public markerImageOffsetInDegree: number = 0
   @input
   private markerHalfWidth = 5
   @input
@@ -58,6 +61,8 @@ export class QuestMarkerController extends BaseScriptComponent {
 
   private questMarkers: Map<string, QuestMarker> = new Map()
   private placeToQuestMarker: Map<Place, QuestMarker> = new Map()
+  private destinationObjects: Map<string, SceneObject> = new Map()
+  private pendingDestinationPlaces: Map<string, Place> = new Map()
   private camera: Camera
   private cameraTransform: Transform
   private halfFOV: number
@@ -75,6 +80,13 @@ export class QuestMarkerController extends BaseScriptComponent {
 
   private updateDispatcher: UpdateDispatcher = LensConfig.getInstance().updateDispatcher
 
+  // Add these new events
+  private onQuestMarkerAddedEvent = new Event<{questMarker: QuestMarker, place: Place}>()
+  public onQuestMarkerAdded: PublicApi<{questMarker: QuestMarker, place: Place}> = this.onQuestMarkerAddedEvent.publicApi()
+
+  private onQuestMarkerRemovedEvent = new Event<QuestMarker>()
+  public onQuestMarkerRemoved: PublicApi<QuestMarker> = this.onQuestMarkerRemovedEvent.publicApi()
+
   onAwake() {
     this.createEvent("OnStartEvent").bind(this.onStart.bind(this))
     this.updateDispatcher.createLateUpdateEvent("LateUpdateEvent").bind(this.onLateUpdate.bind(this))
@@ -84,13 +96,23 @@ export class QuestMarkerController extends BaseScriptComponent {
     this.camera = WorldCameraFinderProvider.getInstance().getComponent()
     this.cameraTransform = WorldCameraFinderProvider.getInstance().getTransform()
 
+    print("Camera initialized: " + (this.camera ? "yes" : "no"))
+    print("Camera transform initialized: " + (this.cameraTransform ? "yes" : "no"))
+
     this.userPosition = this.navigationComponent.getUserPosition()
+    print("User position initialized: " + (this.userPosition ? "yes" : "no"))
+
     this.navigationComponent.onNavigationStarted.add((place) => {
       this.updateSelected(place)
     })
   }
 
   onLateUpdate() {
+    // Early return if camera hasn't been initialized yet
+    if (!this.camera || !this.cameraTransform) {
+      return
+    }
+
     this.halfFOV = this.camera.fov / 2 - VIEW_DETECT_ANGLE_BUFFER
 
     const markerPlaneDistanceFromCamera = this.sceneObject
@@ -133,10 +155,109 @@ export class QuestMarkerController extends BaseScriptComponent {
     })
 
     this.resolveMarkerPositions()
+    this.updateDestinationObjects()
+    this.retryPendingDestinationObjects()
+  }
+
+  /**
+   * Updates the position and rotation of all destination 3D objects
+   * Keeps them aligned with their corresponding quest markers
+   */
+  private updateDestinationObjects() {
+    if (!this.destinationPrefab) {
+      return
+    }
+
+    if (this.destinationObjects.size === 0) {
+      return
+    }
+
+    // print("Updating " + this.destinationObjects.size + " destination objects")
+
+    this.destinationObjects.forEach((destinationObject, markerId) => {
+      const marker = this.questMarkers.get(markerId)
+      if (!marker) {
+        print("Removing destination object for missing marker: " + markerId)
+        destinationObject.destroy()
+        this.destinationObjects.delete(markerId)
+        return
+      }
+
+      const distance = marker.getPhysicalDistance(this.userPosition) ?? 0
+      const bearing = marker.getBearing(this.userPosition) ?? 0
+
+      const cameraPosition = this.cameraTransform.getWorldPosition()
+      const userForward = this.cameraTransform.back
+        .projectOnPlane(vec3.up())
+        .normalize()
+
+      // Update position using the same logic as quest markers
+      const markerLocationWorldPos = this.cameraTransform
+        .getWorldPosition()
+        .add(
+          quat
+            .fromEulerAngles(0, -bearing, 0)
+            .multiplyVec3(userForward)
+            .uniformScale(distance * 100)
+        )
+        .add(
+          new vec3(
+            0,
+            1, // Fixed height offset
+            0
+          )
+        )
+
+      destinationObject.getTransform().setWorldPosition(markerLocationWorldPos)
+
+      // Update rotation to face the user
+      const directionToUser = cameraPosition
+        .sub(markerLocationWorldPos)
+        .normalize()
+      const rotationToUser = quat.lookAt(directionToUser, vec3.up())
+      destinationObject.getTransform().setWorldRotation(rotationToUser)
+
+      // Update text if the destination object has a text component
+      const distanceInMeters = Math.round(distance)
+      const locationText = `${marker.markerLabel.text}\n${distanceInMeters}m`
+      
+      // Update text component using the robust method
+      this.updateDestinationObjectText(destinationObject, locationText)
+    })
   }
 
   public getQuestMarks(): QuestMarker[] {
     return Array.from(this.questMarkers.values())
+  }
+
+  public getDestinationObjects(): SceneObject[] {
+    return Array.from(this.destinationObjects.values())
+  }
+
+  /**
+   * Test method to manually create a destination object for debugging
+   */
+  public testCreateDestinationObject(): void {
+    print("Testing destination object creation...")
+    
+    if (!this.destinationPrefab) {
+      print("ERROR: Destination prefab is not assigned!")
+      return
+    }
+    
+    if (!this.cameraTransform) {
+      print("ERROR: Camera transform is not initialized!")
+      return
+    }
+    
+    // Create a test destination object at a fixed position
+    const testPosition = this.cameraTransform.getWorldPosition().add(new vec3(0, 0, -5))
+    const destinationObject = this.destinationPrefab.instantiate(null)
+    destinationObject.getTransform().setWorldPosition(testPosition)
+    destinationObject.name = "TestDestination"
+    
+    print("Created test destination object at: " + testPosition)
+    this.destinationObjects.set("test", destinationObject)
   }
 
   private resolveMarkerPositions() {
@@ -311,15 +432,81 @@ export class QuestMarkerController extends BaseScriptComponent {
       this.defaultLabelY = questMarker.markerLabel.getTransform().getLocalPosition().y
       this.questMarkers.set(uniqueIdentifier, questMarker)
 
+      // Create destination object if prefab is provided
+      if (this.destinationPrefab && place) {
+        print("Destination prefab found, attempting to create destination object")
+        
+        // Safety check - make sure camera and user position are ready
+        if (!this.cameraTransform || !this.userPosition) {
+          print("Camera or user position not ready yet, skipping destination object creation")
+          return
+        }
+        
+        const userLocation = this.userPosition.getGeoPosition()
+        const placeLocation = place.getGeoPosition()
+        
+        print("User location: " + (userLocation ? "valid" : "null"))
+        print("Place location: " + (placeLocation ? "valid" : "null"))
+        
+        if (userLocation && placeLocation) {
+          this.createDestinationObject(questMarker, place, uniqueIdentifier)
+        } else {
+          print("Failed to get valid locations - userLocation: " + (userLocation ? "valid" : "null") + ", placeLocation: " + (placeLocation ? "valid" : "null"))
+          // Store this place to retry later when user location becomes available
+          if (!userLocation) {
+            print("Storing place for later destination object creation: " + (place.name ?? "unnamed"))
+            this.pendingDestinationPlaces.set(uniqueIdentifier, place)
+          }
+        }
+      } else {
+        if (!this.destinationPrefab) {
+          print("Destination prefab is null - make sure to assign it in the inspector")
+        }
+        if (!place) {
+          print("Place is null - destination objects only created when place is provided")
+        }
+      }
+
       if (!isNull(place)) {
         this.placeToQuestMarker.set(place, questMarker)
+        // Trigger the added event
+        this.onQuestMarkerAddedEvent.invoke({questMarker, place})
       }
     }
   }
 
   public removeQuestMark(questMark: QuestMarker): void {
+    // Trigger the removed event before removing
+    this.onQuestMarkerRemovedEvent.invoke(questMark)
+    
+    // Clean up destination object
+    const destinationObject = this.destinationObjects.get(questMark.uniqueIdentifier)
+    if (destinationObject) {
+      destinationObject.destroy()
+      this.destinationObjects.delete(questMark.uniqueIdentifier)
+    }
+    
+    // Clean up pending destination place
+    this.pendingDestinationPlaces.delete(questMark.uniqueIdentifier)
+    
     this.questMarkers.delete(questMark.uniqueIdentifier)
     questMark.transform.getSceneObject().destroy()
+  }
+
+  /**
+   * Cleanup handler that removes all markers and destination objects
+   */
+  public removeAllQuestMarks(): void {
+    this.questMarkers.forEach((questMark) => {
+      questMark.transform.getSceneObject().destroy()
+    })
+    this.questMarkers.clear()
+    this.placeToQuestMarker.clear()
+    
+    this.destinationObjects.forEach((obj) => obj.destroy())
+    this.destinationObjects.clear()
+    
+    this.pendingDestinationPlaces.clear()
   }
 
   private updateSelected(place: Place | null): void {
@@ -367,5 +554,140 @@ export class QuestMarkerController extends BaseScriptComponent {
     }
 
     return new vec2(x, y)
+  }
+
+  private createDestinationObject(questMarker: QuestMarker, place: Place, uniqueIdentifier: string): void {
+    const userLocation = this.userPosition.getGeoPosition()
+    const placeLocation = place.getGeoPosition()
+    
+    if (userLocation && placeLocation) {
+      const distance = this.userPosition.getDistanceTo(place) ?? 0
+      const bearing = this.userPosition.getBearingTo(place, false) ?? 0
+
+      print("Distance: " + distance + "m, Bearing: " + bearing)
+
+      // Calculate initial world position
+      const cameraPosition = this.cameraTransform.getWorldPosition()
+      const userForward = this.cameraTransform.back
+        .projectOnPlane(vec3.up())
+        .normalize()
+
+      const markerLocationWorldPos = this.cameraTransform
+        .getWorldPosition()
+        .add(
+          quat
+            .fromEulerAngles(0, -bearing, 0)
+            .multiplyVec3(userForward)
+            .uniformScale(distance * 100)
+        )
+        .add(
+          new vec3(
+            0,
+            1, // Fixed height offset
+            0
+          )
+        )
+
+      print("Attempting to instantiate destination prefab at position: " + markerLocationWorldPos)
+
+      // Instantiate destination prefab at world position
+      const destinationObject = this.destinationPrefab.instantiate(null)
+      print("Destination object instantiated: " + destinationObject.name + ", enabled: " + destinationObject.enabled)
+      
+      const newWorldPosition = new vec3(markerLocationWorldPos.x, 50000, markerLocationWorldPos.z)
+      destinationObject.getTransform().setWorldPosition(newWorldPosition)
+      print("Set world position to: " + newWorldPosition)
+      
+      destinationObject.getTransform().setLocalScale(new vec3(1000, 100000, 1000))
+      print("Set scale to: 1000, 100000, 1000")
+
+      // Make the destination object face the user
+      const directionToUser = cameraPosition
+        .sub(markerLocationWorldPos)
+        .normalize()
+      const rotationToUser = quat.lookAt(directionToUser, vec3.up())
+      destinationObject.getTransform().setWorldRotation(rotationToUser)
+      print("Set rotation to face user")
+
+      // Set name and text
+      destinationObject.name = "Destination_" + uniqueIdentifier
+      const locationName = place.name ?? "Unknown Location"
+      const distanceInMeters = Math.round(distance)
+      const locationText = `${locationName}\n${distanceInMeters}m`
+
+      print("Created destination object: " + destinationObject.name + " with text: " + locationText)
+
+      // Debug: Check basic properties
+      print("Destination object enabled: " + destinationObject.enabled)
+      print("Destination object children count: " + destinationObject.children.length)
+      destinationObject.children.forEach((child, index) => {
+        print("Child " + index + ": " + child.name + ", enabled: " + child.enabled)
+      })
+
+      // Update text component using the robust method
+      this.updateDestinationObjectText(destinationObject, locationText)
+
+      this.destinationObjects.set(uniqueIdentifier, destinationObject)
+      print("Destination object added to tracking map. Total objects: " + this.destinationObjects.size)
+    } else {
+      print("Failed to get valid locations - userLocation: " + (userLocation ? "valid" : "null") + ", placeLocation: " + (placeLocation ? "valid" : "null"))
+      // Store this place to retry later when user location becomes available
+      if (!userLocation) {
+        print("Storing place for later destination object creation: " + (place.name ?? "unnamed"))
+        this.pendingDestinationPlaces.set(uniqueIdentifier, place)
+      }
+    }
+  }
+
+  /**
+   * Try to create destination objects for places that were added before user location was available
+   */
+  private retryPendingDestinationObjects(): void {
+    if (this.pendingDestinationPlaces.size === 0) {
+      return
+    }
+
+    const userLocation = this.userPosition.getGeoPosition()
+    if (!userLocation) {
+      return // Still no user location
+    }
+
+    print("Retrying " + this.pendingDestinationPlaces.size + " pending destination objects")
+
+    this.pendingDestinationPlaces.forEach((place, uniqueIdentifier) => {
+      const questMarker = this.questMarkers.get(uniqueIdentifier)
+      if (questMarker) {
+        this.createDestinationObject(questMarker, place, uniqueIdentifier)
+      }
+      this.pendingDestinationPlaces.delete(uniqueIdentifier)
+    })
+  }
+
+  private updateDestinationObjectText(destinationObject: SceneObject, locationText: string): void {
+    // Try to find text component on the main object first
+    let textComponent = destinationObject.getComponent("Component.Text")
+    if (textComponent) {
+      textComponent.text = locationText
+      print("Updated text component on main object successfully")
+      return
+    }
+
+    // Search through children for text component
+    const children = destinationObject.children
+    for (let i = 0; i < children.length; i++) {
+      try {
+        const child = destinationObject.getChild(i)
+        textComponent = child.getComponent("Component.Text")
+        if (textComponent) {
+          textComponent.text = locationText
+          print("Updated text component on child " + i + " successfully")
+          return
+        }
+      } catch (error) {
+        print("Error accessing child " + i + ": " + error)
+      }
+    }
+
+    // print("No text component found in destination object hierarchy")
   }
 }

@@ -1052,6 +1052,42 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/477e1438-d7ed-446f-9008-767ee4669e5d>
+  PrefabRemaps:
+    []
+  Name: Interactable
+  Enabled: true
+  ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
+  ScriptInputsDefault:
+    targetingMode: true
+    enableInstantDrag: true
+    isScrollable: true
+    allowMultipleInteractors: true
+    enablePokeDirectionality: true
+    acceptableXDirections: true
+    acceptableYDirections: true
+    acceptableZDirections: true
+    useFilteredPinch: true
+    isSynced: true
+    acceptableSyncInteractionTypes: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetingMode: !<float> 3.000000
+      enableInstantDrag: false
+      isScrollable: false
+      allowMultipleInteractors: true
+      enablePokeDirectionality: false
+      acceptableXDirections: !<float> 0.000000
+      acceptableYDirections: !<float> 0.000000
+      acceptableZDirections: !<float> 1.000000
+      useFilteredPinch: false
+      isSynced: false
+      acceptableSyncInteractionTypes: !<float> 7.000000
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/4b84b744-c828-4153-8eeb-7230f1bf6530>
   PrefabRemaps:
     []
@@ -1230,6 +1266,24 @@
   ScriptTypes:
     "":
       {}
+- !<ColliderComponent/4ee5bc65-9025-4da1-bf0d-be223e8ed7d5>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: false
+    Radius: 0.700000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<ScriptComponent/52f3577e-4be1-40c8-950f-7cf239d9e5cc>
   PrefabRemaps:
     []
@@ -1377,6 +1431,7 @@
     - !<own> 70c95a74-3bc9-4c82-9a10-a339b939c0a4
     - !<own> 137d47ab-e1d0-4fd0-96af-63cab1c1fc88
     - !<own> 118b798a-c750-4c34-a6c6-7184784421dd
+    - !<own> 8f9d445a-1cc7-40f6-a55d-dfbb785cdff7
 - !<ScriptComponent/5c2fe452-81f0-4bc4-bc66-a1e9c8d5fe8b>
   PrefabRemaps:
     []
@@ -1667,10 +1722,10 @@
   PrefabRemaps:
     []
   Name: Physics Collider
-  Enabled: false
+  Enabled: true
   Shape: !<Box>
     FitVisual: false
-    Size: {x: 60.000000, y: 60.000000, z: 0.500000}
+    Size: {x: 20.000000, y: 20.000000, z: 2.000000}
   Matter: !<reference> 00000000-0000-0000-0000-000000000000
   Filter: !<reference> 00000000-0000-0000-0000-000000000000
   OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1685,7 +1740,7 @@
   PrefabRemaps:
     []
   Name: PromptImage
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 1.000000}
@@ -1697,7 +1752,6 @@
   Components:
     - !<own> ea65caa4-cf24-430e-8e22-669c9acf66da
     - !<own> 72b92c4a-5a86-4b36-8dec-de2700830ace
-    - !<own> 810117b8-4cc2-45f9-85a4-f9c9d90dede3
 - !<ScriptComponent/70c95a74-3bc9-4c82-9a10-a339b939c0a4>
   PrefabRemaps:
     []
@@ -1723,7 +1777,7 @@
       mapZoomLevel: !<float> 17.000000
       showUserPin: true
       userPinVisual: !<reference.ObjectPrefab> 595354e2-495b-4054-acdc-1ee116fd1147
-      userPinScale: !<Vec2> {x: 2.500000, y: 2.500000}
+      userPinScale: !<Vec2> {x: 5.000000, y: 5.000000}
       userPinMinimizedScale: !<float> 1.000000
       userPinAlignedWithOrientation: true
       mapPinPrefab: !<reference.ObjectPrefab> fc18f04a-99f6-4608-a33f-a6ce4936aec6
@@ -1879,11 +1933,30 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<Image/7bd28f60-4c99-4170-aff1-98b0381b0418>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> aebc37e5-8eba-40ec-8cde-543588ed3417
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
 - !<SceneObject/7e89ed14-2005-4892-81b2-217a0e8719ba>
   PrefabRemaps:
     []
   Name: Quest Markers
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -1897,28 +1970,6 @@
     - !<own> 2a89558b-3c16-49a7-87e8-8f013312fc50
     - !<own> 19958cd4-964b-4296-97ce-4933886d1cd6
     - !<own> c41aac8e-8b4c-4ba3-bbce-f9e0a1ebc6fc
-- !<ScriptComponent/810117b8-4cc2-45f9-85a4-f9c9d90dede3>
-  PrefabRemaps:
-    []
-  Name: CustomLocationPlacesImageDisplay
-  Enabled: true
-  ScriptAsset: !<reference> 0629fbc0-876f-4a40-8b0d-6a6b70937f6e
-  ScriptInputsDefault:
-    distanceToPrompt: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      navigationComponent: !<MappingBased.AssignableType> d4d735fd-a9c7-4a35-983a-3ec25ac2d753
-      imageRoot: !<reference.SceneObject> 6f0cba8c-9040-4746-a248-1fcd005a9844
-      image: !<reference.Image> ea65caa4-cf24-430e-8e22-669c9acf66da
-      disableOnShow: !<reference.SceneObject[]>
-        - !<reference> c7c1c972-9f0e-4fde-b9fe-3839077093be
-      manageEnabled: false
-      distanceToPrompt: !<float> 15.000000
-  ScriptTypes:
-    "":
-      {}
 - !<ColliderComponent/85002995-d622-4c8d-91d0-4c3c56065b63>
   PrefabRemaps:
     []
@@ -2184,6 +2235,23 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/8f9d445a-1cc7-40f6-a55d-dfbb785cdff7>
+  PrefabRemaps:
+    []
+  Name: MapAnimator
+  Enabled: true
+  ScriptAsset: !<reference> 328fbb9e-187d-4788-961e-5189601fcd2c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      navigationComponent: !<MappingBased.AssignableType> d4d735fd-a9c7-4a35-983a-3ec25ac2d753
+      mapComponent: !<MappingBased.AssignableType_1> 70c95a74-3bc9-4c82-9a10-a339b939c0a4
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/942c61aa-b72f-43a2-af1c-051fcbb48636>
   PrefabRemaps:
     []
@@ -2239,6 +2307,23 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/9e9426b6-05b7-421d-b7c9-7fe80fe6f7b4>
+  PrefabRemaps:
+    []
+  Name: NoMapHamburger
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: -0.100000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 15.000000, y: 15.000000, z: 15.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 7bd28f60-4c99-4170-aff1-98b0381b0418
+    - !<own> 477e1438-d7ed-446f-9008-767ee4669e5d
+    - !<own> 4ee5bc65-9025-4da1-bf0d-be223e8ed7d5
 - !<Text/9f0345b1-f5b3-46c0-a55d-41e1223ac1d7>
   PrefabRemaps:
     []
@@ -2766,6 +2851,7 @@
     - !<own> 8e28ea88-2d48-4360-8bb0-9c021cf0bfba
     - !<own> ecce788d-f5cc-4094-83f7-6b42928f22c2
     - !<own> a7d5531e-53d1-4cd0-8dbe-a63e63dcda7f
+    - !<own> 9e9426b6-05b7-421d-b7c9-7fe80fe6f7b4
   Components:
     - !<own> fdc49a08-f9d2-40b3-92bf-58c88e1141d0
     - !<own> 070767e1-13b8-43a0-ad61-aaced48652d6
@@ -3173,6 +3259,7 @@
     "":
       navigationComponent: !<MappingBased.AssignableType> d4d735fd-a9c7-4a35-983a-3ec25ac2d753
       questMarkerPrefab: !<reference.ObjectPrefab> 140d3cb7-35bb-42a6-a5d7-18428941ada7
+      destinationPrefab: !<reference.ObjectPrefab> e1ebda5b-58b6-46e7-89eb-5c4d6dc6ce34
       inViewMaterial: !<reference.Material> 8695c20a-6433-4bd4-8fe9-27f568407aa4
       outOfViewMaterial: !<reference.Material> cf2c6c64-7672-4993-be5f-5830f29b2f58
       scale: !<float> 3.000000
@@ -3245,7 +3332,7 @@
     []
   Name: Image
   Enabled: true
-  RenderOrder: 1
+  RenderOrder: 2
   StretchMode: Fit
   VerticalAlignment: Center
   HorizontalAlignment: Center
@@ -3266,7 +3353,7 @@
   Enabled: true
   Layers: 1
   LocalTransform:
-    position: {x: -5.229100, y: -5.720300, z: 0.000000}
+    position: {x: -5.229100, y: -5.720300, z: 1.000000}
     rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
     scale: {x: 5.000000, y: 5.000000, z: 5.000000}
     hasSegmentScaleCompensation: false

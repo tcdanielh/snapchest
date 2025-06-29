@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/83f0a81f-a79a-4ef6-af01-5a9cef0e10ab>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 687ece55-7db2-4cc8-8ae9-89531e1242a0
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 687ece55-7db2-4cc8-8ae9-89531e1242a0
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> c56fe6d5-b564-4ebd-90f5-c78b22558e62
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<RenderMeshVisual/33d80646-af3b-44ce-89a2-ba0f7371f3c6>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 507524b9-79b1-4b81-85d3-e4ccdde43c89
+  Mesh: !<reference> cc14a0b9-38b5-4517-8e16-921a870a98e3
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ObjectPrefab/a4390853-e32a-4037-b61e-3a2882c7c807>
+  PackagePath: ""
+  objects:
+    - !<own> a93a004a-c9e5-4e04-9edb-a194b516d498
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/a93a004a-c9e5-4e04-9edb-a194b516d498>
+  PrefabRemaps:
+    []
+  Name: Mesh using Hologram
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 2.063402, z: -34.180882}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 100.000000, y: 1000.000000, z: 100.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 33d80646-af3b-44ce-89a2-ba0f7371f3c6
+- !<ObjectPrefabAssetData/c56fe6d5-b564-4ebd-90f5-c78b22558e62>
+  SourceRemaps:
+    - 687ece55-7db2-4cc8-8ae9-89531e1242a0: a4390853-e32a-4037-b61e-3a2882c7c807
+    - dac52526-09a2-4789-beab-d92a1cc2f09c: 33d80646-af3b-44ce-89a2-ba0f7371f3c6
+    - ff87b4ca-8d37-4563-b88d-31e851b7396f: a93a004a-c9e5-4e04-9edb-a194b516d498
+  SourceState: !<own> a4390853-e32a-4037-b61e-3a2882c7c807

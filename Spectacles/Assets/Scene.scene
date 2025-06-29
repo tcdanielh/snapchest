@@ -11,9 +11,21 @@
     - !<own> 0ca818c7-bbd0-4be2-a06c-b19ed24fe54e
     - !<own> 69fb5cd3-e1aa-4494-a2cf-0eaa7ebacb68
     - !<own> 98bd232a-d50d-4482-9742-0fb162c09621
+    - !<own> 6e411541-9c42-4b64-98f5-6fd4b7602c38
+    - !<own> d0f225ab-5a49-4744-8aa6-59f8b4f840af
+    - !<own> 08363460-e31b-4d82-8d7b-cf7038e202c0
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
-      []
+      - |
+        id: 18
+        name: Layer 1
+        color: 0
+
+      - |
+        id: 19
+        name: Layer 2
+        color: 1
+
     HasOrtho: true
   RenderOutput: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
   RenderPreviewOutput: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
@@ -1218,18 +1230,25 @@
       navigationDataComponent: !<MappingBased.AssignableType> d4d735fd-a9c7-4a35-983a-3ec25ac2d753
       placeInputs:
         - active: true
+          latitude: !<string> 37.873728
+          longitude: !<string> -122.257018
+          label: Hearst Mining Circle
+          icon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+          description: "They're draining the water!"
+          distanceToActivate: !<float> 10.000000
+        - active: true
           latitude: !<string> 37.872332
           longitude: !<string> -122.257964
           label: Campanile
           icon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
-          description: Big clock tower
+          description: The bell tower is under attack!
           distanceToActivate: !<float> 10.000000
-        - active: false
-          latitude: !<string> 40.7484
-          longitude: !<string> -73.9857
-          label: Empire State
+        - active: true
+          latitude: !<string> 37.87023
+          longitude: !<string> -122.25960
+          label: Sather Gate
           icon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
-          description: Deco skyscraper
+          description: Challenge 3
           distanceToActivate: !<float> 10.000000
       sceneObjects:
         []
@@ -1272,6 +1291,22 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/08363460-e31b-4d82-8d7b-cf7038e202c0>
+  PrefabRemaps:
+    - 08363460-e31b-4d82-8d7b-cf7038e202c0: ff87b4ca-8d37-4563-b88d-31e851b7396f
+    - 5f1fb60d-4fa0-43e5-b1d5-9aa3cf6b9f86: dac52526-09a2-4789-beab-d92a1cc2f09c
+  Name: Mesh using Hologram
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 50000.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 100.000000, y: 100000.000000, z: 100.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5f1fb60d-4fa0-43e5-b1d5-9aa3cf6b9f86
 - !<SceneObject/0897f9fa-6de6-4c6a-ab79-07d93a954fa0>
   PrefabRemaps:
     []
@@ -6739,7 +6774,7 @@
   PrefabRemaps:
     []
   Name: Quest Markers
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -11151,6 +11186,26 @@
     - !<own> 51663fc5-8505-4105-a72a-5835ee68a6c8
   Components:
     []
+- !<RenderMeshVisual/5f1fb60d-4fa0-43e5-b1d5-9aa3cf6b9f86>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 507524b9-79b1-4b81-85d3-e4ccdde43c89
+  Mesh: !<reference> cc14a0b9-38b5-4517-8e16-921a870a98e3
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<SceneObject/5f944d76-4e24-4b4c-882c-cf95c6d7d75c>
   PrefabRemaps:
     []
@@ -12829,6 +12884,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/6e411541-9c42-4b64-98f5-6fd4b7602c38>
+  PrefabRemaps:
+    []
+  Name: Cylinder
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 5.885700, z: -65.406540}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c73a4884-f183-4990-a59a-f1875fd5797a
 - !<ScriptComponent/6e6a36eb-aee9-4d1f-889b-b983babd0455>
   PrefabRemaps:
     []
@@ -14693,6 +14763,7 @@
     - 05b9b5c6-9833-41cc-b125-809682b3606a: 8a0191d1-4895-4d0b-b34d-e0b158193108
     - 05d13bc2-6c63-4b3c-8e15-f137a12db33a: dacf50cb-74f8-43a9-ba38-fe6c81482415
     - 074d9508-e344-4cf8-be7d-8fa32ffc8870: 27b9b522-4086-4037-a51a-49744aa42a5c
+    - 0b3abc68-99d9-4638-b876-0a71b1673070: 9e9426b6-05b7-421d-b7c9-7fe80fe6f7b4
     - 0cf6e425-be8a-45b5-9876-173e195045a4: cbec395f-93e5-41c3-9b84-36d3751d4818
     - 0f14cd93-fc46-4ac0-8b56-f50648ad9d56: 8626b573-b432-4d56-b188-ea80ba260fd8
     - 10727148-bcbd-4f6b-a769-bf7affa733d1: 3442e5df-63e5-404a-903d-5ba8dbb758e6
@@ -14750,7 +14821,9 @@
     - 67c0398e-a8e3-42bc-b9cc-3f1495e4cdcf: f7b23d76-92d0-4d0e-b04c-768b2392c3ba
     - 68a93156-3cb3-46bd-8963-c5c37fd5e694: 6774c5cf-1d80-40ac-9e15-70960d1e07bf
     - 6dd9ba6e-c9fc-49f6-8910-7b7bb8b4eeed: 4b84b744-c828-4153-8eeb-7230f1bf6530
+    - 6ed60193-61bb-4585-b3f4-c7b33363a57b: 8f9d445a-1cc7-40f6-a55d-dfbb785cdff7
     - 788afb23-8321-4560-85f7-8c7b9a20dac2: ed2efa49-f772-4c6e-8cc7-54b34bc10a1f
+    - 79af9433-91e9-4d9d-b262-fa90970f3f31: 477e1438-d7ed-446f-9008-767ee4669e5d
     - 7e70534d-95f7-4b6f-a636-27d1aee1581e: 5ec699c0-8ae9-4e51-974a-8f69fbf8274e
     - 81f5cdbf-839e-44ef-b3bb-0a7a9dfee7c3: 5ae01f61-3563-4fe5-9162-77306d08c127
     - 89c3bfae-853c-439e-85fc-846e79be49f2: 7a60f2f3-3a90-4f82-a919-38b2eb69329a
@@ -14792,6 +14865,7 @@
     - c4845e88-6955-44e4-93d1-04554d36f266: ea65caa4-cf24-430e-8e22-669c9acf66da
     - c4a6ece6-98fb-4de2-957d-942d0e9d7f1c: 2da2b49a-4e21-4799-903d-48f20c420b7e
     - c51dc561-34ee-4d2e-9d75-3d68bc93a030: c9f58f04-0854-4309-ae31-c40a2455bb51
+    - c600a838-46c3-44ef-941e-d04226042ad3: 7bd28f60-4c99-4170-aff1-98b0381b0418
     - c80986d7-0b3c-4511-8a4b-dc157dd5360b: 01a1f571-332e-438e-a3d5-10343d496c16
     - cdaf6a00-c4d0-4315-a9f4-0029953345a2: c41aac8e-8b4c-4ba3-bbce-f9e0a1ebc6fc
     - cdcb6416-f01f-481d-98e3-1a0ce757243c: 810117b8-4cc2-45f9-85a4-f9c9d90dede3
@@ -14811,6 +14885,7 @@
     - fab113ee-e560-44d7-95a6-6f1954edce9b: 038e8ba1-191b-43f0-87c3-19d04ce49cdb
     - fabeebd0-333c-4974-9952-055fb280ea55: c490a540-ca8f-4a8a-90e9-297a07aa1aa4
     - fba77673-288c-43f0-bd43-9f04432cf134: 666a9083-ade4-458f-9ac5-49f905165511
+    - fd8e94c1-7e44-4e5b-9eb5-f51bb81a9094: 4ee5bc65-9025-4da1-bf0d-be223e8ed7d5
     - ff856018-e7b5-4c81-838a-2994bd563157: fc606572-6734-4731-9824-bd78b5e71dfd
   Name: "[MapComponent]"
   Enabled: true
@@ -16415,6 +16490,7 @@
     "":
       navigationComponent: !<MappingBased.AssignableType> d4d735fd-a9c7-4a35-983a-3ec25ac2d753
       questMarkerPrefab: !<reference.ObjectPrefab> 140d3cb7-35bb-42a6-a5d7-18428941ada7
+      destinationPrefab: !<reference.ObjectPrefab> 687ece55-7db2-4cc8-8ae9-89531e1242a0
       inViewMaterial: !<reference.Material> 8695c20a-6433-4bd4-8fe9-27f568407aa4
       outOfViewMaterial: !<reference.Material> cf2c6c64-7672-4993-be5f-5830f29b2f58
       scale: !<float> 3.000000
@@ -17905,7 +17981,7 @@
     - fc99f4f9-f6af-47b0-bbd1-3ddf5b534896: 1f96c322-a5f1-4fa9-98ef-c6da062a8cf1
     - fe475e11-6359-4065-ad0e-6cb12c1bf44b: 1a53ec1a-9b8a-4070-9b7a-c83d053ed5f4
   Name: "[MapComponent]"
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: -130.000000}
@@ -18245,6 +18321,26 @@
     []
   Components:
     []
+- !<RenderMeshVisual/9d6a5892-8742-463b-9c72-c91dcab11843>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 832f6232-38b8-4f7c-8ba1-a0bdfe4caf8b
+  Mesh: !<reference> 47517e02-ad72-49e6-8053-f374c15641bf
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<SceneObject/9d83ec2b-25fc-4f54-82be-a984c72012f1>
   PrefabRemaps:
     []
@@ -20591,7 +20687,7 @@
     - e83d12fe-fdfc-4d78-a366-fbdda09e634a: 4baa9796-e8f3-4746-b172-6f59571d01c3
     - ebe60f75-43a6-4663-982e-0f38580df7d4: db6ca994-9d32-4a2b-91b3-ff022a4e8514
   Name: MainPanel
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -23760,6 +23856,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<RenderMeshVisual/c73a4884-f183-4990-a59a-f1875fd5797a>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 76cbaac7-1c81-44ab-92d3-22dc303420d2
+  Mesh: !<reference> cc14a0b9-38b5-4517-8e16-921a870a98e3
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<SceneObject/c744a96d-7089-4c96-9ed6-c59683d71d36>
   PrefabRemaps:
     []
@@ -24540,6 +24656,22 @@
     - !<own> 30fed740-086a-4725-916c-166c7d498de1
   Components:
     []
+- !<SceneObject/d0f225ab-5a49-4744-8aa6-59f8b4f840af>
+  PrefabRemaps:
+    - 9d6a5892-8742-463b-9c72-c91dcab11843: 1521ed17-18df-4600-ac8f-a752112f97df
+    - d0f225ab-5a49-4744-8aa6-59f8b4f840af: 96553b52-7738-4089-96ec-e6de02cce9ae
+  Name: VolumetricCloud__PLACE_IN_OBJECTS_PANEL
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 16.738873, z: -108.934425}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 6.978697, y: 6.978697, z: 6.978697}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 9d6a5892-8742-463b-9c72-c91dcab11843
 - !<SceneObject/d10b65e8-9f4e-49fb-b5cc-ed1bce91920f>
   PrefabRemaps:
     []
