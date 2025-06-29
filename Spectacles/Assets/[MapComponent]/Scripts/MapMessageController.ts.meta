@@ -1,0 +1,51 @@
+- !<AssetImportMetadata/590c0b9f-e2f1-e1eb-f30b-a1ac802054b9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 978f69ac-0aef-4094-998a-249552726dee
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 978f69ac-0aef-4094-998a-249552726dee
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9785b228-2303-425f-a972-2e9c8128b216
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9785b228-2303-425f-a972-2e9c8128b216>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7817ba21-5537-4994-bed2-802d1875b124
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    container: false
+    mapComponent: false
+    renderOrder: false
+    textComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - mapComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      container: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      textComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      renderOrder: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType mapComponent
+    - // @input AssignableType_1 container
+    - // @input Component.Text textComponent
+    - // @input float renderOrder

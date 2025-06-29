@@ -28,8 +28,10 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    buttonRoot: false
     enableMapSmoothing: false
     enableScrolling: false
+    highlightPinColor: false
     isMinimapAutoRotate: false
     latitude: false
     longitude: false
@@ -39,13 +41,16 @@
     mapRenderParent: false
     mapUpdateThreshold: false
     mapZoomLevel: false
+    navigationComponent: false
+    placeListCreator: false
     rotation: false
     scrollingFriction: false
+    selectedPinColor: false
     setMapToCustomLocation: false
     showUserPin: false
-    startedAsMiniMap: false
     tileCount: false
     userPinAlignedWithOrientation: false
+    userPinMinimizedScale: false
     userPinScale: false
     userPinVisual: false
   ScriptTypesHidden:
@@ -55,14 +60,18 @@
   DefaultScriptInputs:
     - tileCount: !<float> 2.000000
       mapRenderParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      navigationComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       mapZoomLevel: !<float> 0.000000
       showUserPin: false
       userPinVisual: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       userPinScale: !<Vec2> {x: 0.000000, y: 0.000000}
+      userPinMinimizedScale: !<float> 1.000000
       userPinAlignedWithOrientation: false
       mapPinPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       mapPinsRotated: false
       mapPinCursorDetectorSize: 0.020000
+      highlightPinColor: !<Vec4> {x: 1.000000, y: 0.820000, z: 0.000000, w: 1.000000}
+      selectedPinColor: !<Vec4> {x: 0.820000, y: 1.000000, z: 0.000000, w: 1.000000}
       enableScrolling: false
       scrollingFriction: !<float> 4.000000
       setMapToCustomLocation: false
@@ -72,13 +81,15 @@
       isMinimapAutoRotate: false
       enableMapSmoothing: false
       mapUpdateThreshold: !<float> 0.000000
-      startedAsMiniMap: false
+      buttonRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      placeListCreator: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input float tileCount = 2
     - // @input SceneObject mapRenderParent
+    - // @input AssignableType navigationComponent
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"Zoom level: 8 far zoom , 21 close zoom"}'
     - '// @input float mapZoomLevel {"widget":"slider", "min":8, "max":21, "step":1}'
@@ -88,6 +99,7 @@
     - '// @ui {"widget":"group_start", "label":"User Pin", "showIf":"showUserPin", "showIfValue":true}'
     - // @input Asset.ObjectPrefab userPinVisual
     - // @input vec2 userPinScale
+    - // @input float userPinMinimizedScale = 1
     - // @input bool userPinAlignedWithOrientation
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
@@ -96,6 +108,8 @@
     - // @input Asset.ObjectPrefab mapPinPrefab
     - '// @input bool mapPinsRotated {"hint":"All the map pins will rotate according to map rotation if enabled"}'
     - '// @input float mapPinCursorDetectorSize = 0.02 {"hint":"A cicle shape detector is used to detect cursor"}'
+    - '// @input vec4 highlightPinColor = "{1.0, 0.82, 0.0, 1}" {"widget":"color"}'
+    - '// @input vec4 selectedPinColor = "{0.82, 1.0, 0.0, 1}" {"widget":"color"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"Interactions"}'
     - // @input bool enableScrolling
@@ -114,4 +128,5 @@
     - // @input bool enableMapSmoothing
     - '// @ui {"widget":"label", "label":"How often map should be updated (seconds)"}'
     - // @input float mapUpdateThreshold
-    - // @input bool startedAsMiniMap
+    - // @input SceneObject buttonRoot
+    - // @input AssignableType_1 placeListCreator

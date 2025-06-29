@@ -1,0 +1,75 @@
+- !<AssetImportMetadata/3e580f41-def5-16bd-0fd7-f65ecc37c5f7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3d974448-2cbf-47b5-8204-e45f1e6a7f53
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3d974448-2cbf-47b5-8204-e45f1e6a7f53
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 26fac9c8-eadb-47ba-ba12-dde85270829c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/26fac9c8-eadb-47ba-ba12-dde85270829c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2074eabf-38ae-41d3-b8d3-48a274420215
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    beta: false
+    dcutoff: false
+    enableStretchZ: false
+    fullMapCollider: false
+    mapComponent: false
+    mapSceneObject: false
+    minCutoff: false
+    miniMapCollider: false
+    showStretchZProperties: false
+    useFilter: false
+    zStretchFactorMax: false
+    zStretchFactorMin: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - mapSceneObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      mapComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      fullMapCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      miniMapCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      enableStretchZ: true
+      showStretchZProperties: false
+      zStretchFactorMin: !<float> 1.000000
+      zStretchFactorMax: !<float> 12.000000
+      useFilter: true
+      minCutoff: !<float> 2.000000
+      beta: 0.015000
+      dcutoff: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject mapSceneObject
+    - // @input AssignableType mapComponent
+    - // @input Component.ColliderComponent fullMapCollider
+    - // @input Component.ColliderComponent miniMapCollider
+    - '// @input bool enableStretchZ = true {"hint":"Toggles forward stretch for manipulating objects from afar."}'
+    - '// @input bool showStretchZProperties {"showIf":"enableStretchZ", "showIfValue":true}'
+    - '// @input float zStretchFactorMin = 1 {"hint":"Z multiplier on the near end of the stretch scale", "showIf":"showStretchZProperties", "showIfValue":true}'
+    - '// @input float zStretchFactorMax = 12 {"hint":"Z multiplier on the far end of the stretch scale", "showIf":"showStretchZProperties", "showIfValue":true}'
+    - '// @input bool useFilter = true {"hint":"Apply filtering to smooth manipulation"}'
+    - '// @input float minCutoff = 2 {"showIf":"showFilterProperties", "showIfValue":true}'
+    - '// @input float beta = 0.015 {"showIf":"showFilterProperties", "showIfValue":true}'
+    - '// @input float dcutoff = 1 {"showIf":"showFilterProperties", "showIfValue":true}'

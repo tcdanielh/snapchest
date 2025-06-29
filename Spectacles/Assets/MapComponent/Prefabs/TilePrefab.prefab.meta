@@ -81,7 +81,7 @@
     []
   Name: Image
   Enabled: true
-  RenderOrder: -5
+  RenderOrder: 1
   StretchMode: Fit
   VerticalAlignment: Center
   HorizontalAlignment: Center

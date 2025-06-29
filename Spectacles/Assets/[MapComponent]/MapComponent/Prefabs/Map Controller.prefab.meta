@@ -1,0 +1,131 @@
+- !<AssetImportMetadata/1cc2f00d-fb18-518e-fa05-7c5240a02bba>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 5b24bcd1-a378-45fb-a672-9a2cfd2144ca
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 5b24bcd1-a378-45fb-a672-9a2cfd2144ca
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 373963f5-0c6d-44ae-aa65-55d82095ec19
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/373963f5-0c6d-44ae-aa65-55d82095ec19>
+  SourceRemaps:
+    - 0b726bea-d885-47af-935c-9d7c79050554: 606c8159-ec41-4442-b09c-3c2795957b9e
+    - 1ec6475f-fbfe-4802-a7ed-c58aed91591a: a0805ccd-b8e5-45bf-8aa8-7c3427563d0a
+    - 2712ef7f-8765-4b3e-844a-1dac0b43f045: 5fb51bd8-16e5-425c-911c-20edb634a08a
+    - 2de7c16a-c322-404f-9e96-df96170b8933: b3e5b9e1-6fb3-4f75-a4c7-af86806e75f3
+    - 5b24bcd1-a378-45fb-a672-9a2cfd2144ca: b555d3c1-8735-4772-a904-55d95301b8c8
+    - 982ee292-3037-4beb-8245-2e02b1d51faf: ef18b647-95b3-44a8-a9d8-65e2aee6c133
+  SourceState: !<own> b555d3c1-8735-4772-a904-55d95301b8c8
+- !<SceneObject/5fb51bd8-16e5-425c-911c-20edb634a08a>
+  PrefabRemaps:
+    []
+  Name: SnapPlacesProvider
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 606c8159-ec41-4442-b09c-3c2795957b9e
+- !<ScriptComponent/606c8159-ec41-4442-b09c-3c2795957b9e>
+  PrefabRemaps:
+    []
+  Name: SnapPlacesProvider
+  Enabled: true
+  ScriptAsset: !<reference> 45765c93-3afb-4aca-acc3-d0281a6675e6
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/a0805ccd-b8e5-45bf-8aa8-7c3427563d0a>
+  PrefabRemaps:
+    []
+  Name: Map Controller
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: -1.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 5fb51bd8-16e5-425c-911c-20edb634a08a
+  Components:
+    - !<own> b3e5b9e1-6fb3-4f75-a4c7-af86806e75f3
+    - !<own> ef18b647-95b3-44a8-a9d8-65e2aee6c133
+- !<ScreenTransform/b3e5b9e1-6fb3-4f75-a4c7-af86806e75f3>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: -1.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -1.000000
+    bottom: -1.000000
+    right: 1.000000
+    top: 1.000000
+  Offset:
+    left: 0.000000
+    bottom: 0.000000
+    right: 0.000000
+    top: 0.000000
+- !<ObjectPrefab/b555d3c1-8735-4772-a904-55d95301b8c8>
+  PackagePath: ""
+  objects:
+    - !<own> a0805ccd-b8e5-45bf-8aa8-7c3427563d0a
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/ef18b647-95b3-44a8-a9d8-65e2aee6c133>
+  PrefabRemaps:
+    []
+  Name: MapController
+  Enabled: true
+  ScriptAsset: !<reference> 028cb2a3-f1f4-4fcf-8093-931cbd2f1329
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      mapModule: !<reference.MapModule> 0379a641-7fcb-4247-932b-8cfd41f5ab58
+      mapTilePrefab: !<reference.ObjectPrefab> 04b06f36-5a33-4c52-981b-3ec6c56014ab
+      lineMaterial: !<reference.Material> ff4ce2c3-053a-4f1b-a227-cd558f080a40
+      mapRenderPrefab: !<reference.ObjectPrefab> e45ca2cb-f5ad-4663-880a-03c5f580f5da
+      placesProvider: !<MappingBased.AssignableType> 606c8159-ec41-4442-b09c-3c2795957b9e
+  ScriptTypes:
+    "":
+      {}

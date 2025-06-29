@@ -1,0 +1,106 @@
+- !<ObjectPrefab/5b24bcd1-a378-45fb-a672-9a2cfd2144ca>
+  PackagePath: ""
+  objects:
+    - !<own> 1ec6475f-fbfe-4802-a7ed-c58aed91591a
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/0b726bea-d885-47af-935c-9d7c79050554>
+  PrefabRemaps:
+    []
+  Name: SnapPlacesProvider
+  Enabled: true
+  ScriptAsset: !<reference> 45765c93-3afb-4aca-acc3-d0281a6675e6
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/1ec6475f-fbfe-4802-a7ed-c58aed91591a>
+  PrefabRemaps:
+    []
+  Name: Map Controller
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: -1.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 2712ef7f-8765-4b3e-844a-1dac0b43f045
+  Components:
+    - !<own> 2de7c16a-c322-404f-9e96-df96170b8933
+    - !<own> 982ee292-3037-4beb-8245-2e02b1d51faf
+- !<SceneObject/2712ef7f-8765-4b3e-844a-1dac0b43f045>
+  PrefabRemaps:
+    []
+  Name: SnapPlacesProvider
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0b726bea-d885-47af-935c-9d7c79050554
+- !<ScreenTransform/2de7c16a-c322-404f-9e96-df96170b8933>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: -1.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -1.000000
+    bottom: -1.000000
+    right: 1.000000
+    top: 1.000000
+  Offset:
+    left: 0.000000
+    bottom: 0.000000
+    right: 0.000000
+    top: 0.000000
+- !<ScriptComponent/982ee292-3037-4beb-8245-2e02b1d51faf>
+  PrefabRemaps:
+    []
+  Name: MapController
+  Enabled: true
+  ScriptAsset: !<reference> 028cb2a3-f1f4-4fcf-8093-931cbd2f1329
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      mapModule: !<reference.MapModule> 0379a641-7fcb-4247-932b-8cfd41f5ab58
+      mapTilePrefab: !<reference.ObjectPrefab> 04b06f36-5a33-4c52-981b-3ec6c56014ab
+      lineMaterial: !<reference.Material> ff4ce2c3-053a-4f1b-a227-cd558f080a40
+      mapRenderPrefab: !<reference.ObjectPrefab> e45ca2cb-f5ad-4663-880a-03c5f580f5da
+      placesProvider: !<MappingBased.AssignableType> 0b726bea-d885-47af-935c-9d7c79050554
+  ScriptTypes:
+    "":
+      {}

@@ -31,8 +31,9 @@
     lineMaterial: false
     mapModule: false
     mapRenderPrefab: false
+    mapScale: false
     mapTilePrefab: false
-    placesProvider: false
+    visitedDistance: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -41,8 +42,9 @@
     - mapModule: !<reference.MapModule> 00000000-0000-0000-0000-000000000000
       mapTilePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       lineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      mapScale: !<float> 2.000000
       mapRenderPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
-      placesProvider: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      visitedDistance: !<float> 10.000000
   ScriptTypes:
     -
       {}
@@ -50,5 +52,6 @@
     - // @input Asset.MapModule mapModule
     - // @input Asset.ObjectPrefab mapTilePrefab
     - // @input Asset.Material lineMaterial
+    - // @input float mapScale = 2
     - // @input Asset.ObjectPrefab mapRenderPrefab
-    - // @input AssignableType placesProvider
+    - '// @input float visitedDistance = 10 {"hint":"If the user is less that this distance from a placed pin, it will be considered visited."}'

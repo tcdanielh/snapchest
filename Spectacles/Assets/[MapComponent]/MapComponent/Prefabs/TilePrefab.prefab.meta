@@ -1,0 +1,97 @@
+- !<AssetImportMetadata/46d3b3e4-49d6-2e49-6ef7-98dd56db3d8e>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 04b06f36-5a33-4c52-981b-3ec6c56014ab
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 04b06f36-5a33-4c52-981b-3ec6c56014ab
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> a9b95986-5c3a-400b-b080-551bac345cd0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScreenTransform/4af7145c-e63d-43d8-8285-5148d9107b72>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -1.000000
+    bottom: -1.000000
+    right: 1.000000
+    top: 1.000000
+  Offset:
+    left: 0.000000
+    bottom: 0.000000
+    right: 0.000000
+    top: 0.000000
+- !<Image/6978d8f2-18a9-4348-8e4a-73a6f886c08b>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 1
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 9cd6c21a-97c7-4b7f-b37d-4514e2a0b758
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/9f1c3154-aa10-4dd6-b6bc-aebbbc441976>
+  PrefabRemaps:
+    []
+  Name: TilePrefab
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4af7145c-e63d-43d8-8285-5148d9107b72
+    - !<own> 6978d8f2-18a9-4348-8e4a-73a6f886c08b
+- !<ObjectPrefabAssetData/a9b95986-5c3a-400b-b080-551bac345cd0>
+  SourceRemaps:
+    - 04b06f36-5a33-4c52-981b-3ec6c56014ab: f1121419-9d4b-40b0-8cd8-54149a7e48d5
+    - 465b80a1-2e60-4e3b-8f90-666c21e17f31: 4af7145c-e63d-43d8-8285-5148d9107b72
+    - e25e48b5-0f7c-4889-b67c-a929bbae092b: 6978d8f2-18a9-4348-8e4a-73a6f886c08b
+    - e2f1a6e7-4c69-4cde-b19c-189e653ff91e: 9f1c3154-aa10-4dd6-b6bc-aebbbc441976
+  SourceState: !<own> f1121419-9d4b-40b0-8cd8-54149a7e48d5
+- !<ObjectPrefab/f1121419-9d4b-40b0-8cd8-54149a7e48d5>
+  PackagePath: ""
+  objects:
+    - !<own> 9f1c3154-aa10-4dd6-b6bc-aebbbc441976
+  LazyLoading: false
+  RetainAssets: true

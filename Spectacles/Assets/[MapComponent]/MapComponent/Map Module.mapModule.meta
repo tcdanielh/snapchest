@@ -1,0 +1,16 @@
+- !<AssetImportMetadata/e5e3c2bb-b30d-3e94-cdbf-7e1deb61a6ef>
+  ImportedAssetIds:
+    MapModule: !<reference> 0379a641-7fcb-4247-932b-8cfd41f5ab58
+  ImporterName: MapModuleImporter
+  PrimaryAsset: !<reference> 0379a641-7fcb-4247-932b-8cfd41f5ab58
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    {}
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000

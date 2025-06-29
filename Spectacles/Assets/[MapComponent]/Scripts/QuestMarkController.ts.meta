@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/573e8002-bbcd-d2d6-8cbe-679f9fbf4354>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ee85ac17-76b0-455f-a20a-328f87622e7d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ee85ac17-76b0-455f-a20a-328f87622e7d
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3749ef8f-a842-4175-b48a-85cf19c167fc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3749ef8f-a842-4175-b48a-85cf19c167fc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 23af9212-cfd6-43fb-98ea-e7cb933e5593
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    inViewMaterial: false
+    labelHalfHeight: false
+    mapComponent: false
+    markerHalfHeight: false
+    markerHalfWidth: false
+    markerImageOffsetInDegree: false
+    outOfViewMaterial: false
+    questMarkerPrefab: false
+    scale: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - mapComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      questMarkerPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      inViewMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      outOfViewMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      scale: !<float> 1.000000
+      markerImageOffsetInDegree: !<float> 0.000000
+      markerHalfWidth: !<float> 5.000000
+      markerHalfHeight: !<float> 5.000000
+      labelHalfHeight: 0.700000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType mapComponent
+    - // @input Asset.ObjectPrefab questMarkerPrefab
+    - // @input Asset.Material inViewMaterial
+    - // @input Asset.Material outOfViewMaterial
+    - // @input float scale = 1
+    - // @input float markerImageOffsetInDegree
+    - // @input float markerHalfWidth = 5
+    - // @input float markerHalfHeight = 5
+    - // @input float labelHalfHeight = 0.7
